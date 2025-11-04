@@ -28,8 +28,13 @@ body {
   color: var(--ink);
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  line-height: 1.5;
+  line-height: 0.;
   min-height: 100vh;
+  .collection-gallery {
+    background-color: #705152;
+    border-radius: 22px;
+    padding: 10px;
+  }
 }
 
 /* keep images responsive by default */
@@ -40,7 +45,7 @@ img {
 
 .page {
   min-height: 100vh;
-  border: 6px solid var(--page-border); /* that blue frame */
+  border: 1px solid var(--page-border); /* that blue frame */
   min-width: 100%;
 }
 
@@ -112,6 +117,7 @@ img {
   border-bottom: 2px solid rgba(0, 0, 0, 0.45);
   padding-bottom: 1.6rem;
   position: relative;
+  text-align: center;
 }
 
 .hero-content h1 {
@@ -121,9 +127,6 @@ img {
   margin: 0 0 0.8rem;
 }
 
-.hero-subtitle {
-  display: none; /* not in your screenshot */
-}
 
 /* ========== GENERIC SECTION ========== */
 .section {
@@ -148,7 +151,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 360px;
   gap: 1.6rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.35);
+  border-bottom: 2x solid rgba(0, 0, 0, 0.35);
   padding-bottom: 2rem;
 }
 
@@ -162,7 +165,7 @@ img {
   position: relative;
   z-index: 1;
   background: #836868;
-  border: 4px solid rgba(212, 193, 194, 1);
+  border: 4px solid rgba(112 86 86);
   border-radius: 18px;
   padding: 0.9rem 1.1rem 1rem;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
@@ -172,7 +175,7 @@ img {
   grid-column: 2 / 3;
   align-self: start;
   background: #836868; /* requested frame color */
-  border: 4px solid rgba(212, 193, 194, 1);
+  border: 4px solid rgba(112 86 86);
   border-radius: 26px;
   overflow: hidden;
   box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
@@ -220,7 +223,7 @@ img {
 #about::after { content: none !important; }
 
 /* ========== BIG PHOTO PANEL UNDER ABOUT ========== */
-.hero + .section::before {
+.hero + .section::after {
   /* line already done in hero, so skip */
 }
 
@@ -247,13 +250,40 @@ img {
 .feature-photo {
   grid-column: 1 / -1;
   position: relative;
+  display: grid;
+  place-items: center;
+  margin: 4.2rem auto 0;
+  /* Bigger featured image container */
+  max-width: min(1400px, 125%);
+}
+/* background panel behind the featured image */
+.feature-photo::before {
+  content: "";
+  position: absolute;
+  left: 40%;
+  transform: translateX(-45%);
+  /* Wider bar: nearly edge-to-edge inside page */
+  width: min(calc(100vw - 3.5rem), 1201px);
+  /* Much shorter: ~75% less than before */
+  height: 255px;
+  top: 39%;
+  background: #836868;;
+  border-radius: 50px;
+  z-index: 0;
 }
 .feature-photo img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   border-radius: 26px;
-  border: 6px solid rgba(212, 193, 194, 0.95);
-  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.25);
-  max-height: 520px;
+  border: 0;
+  /* thick stroke + outer frame using layered shadows */
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.25), /* drop shadow */
+    0 0 0 12px #4b3637, /* thick dark stroke */
+    0 0 0 0px #836868; /* outer frame */
+  /* Bigger featured image height */
+  max-height: 400px;
   object-fit: cover;
 }
 .image-panel .shadow-block {
@@ -284,13 +314,13 @@ img {
 }
 
 #portraits .section-header h2 {
-  font-size: 2.1rem;
+  font-size: 4.1rem;
 }
 
 .portrait-grid {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -351,7 +381,8 @@ img {
 
 .collection-list {
   display: grid;
-  gap: 1.4rem;
+  gap: 2.5rem;
+  margin-top: 2rem;
 }
 
 .collection-list-item {
@@ -376,12 +407,14 @@ img {
   display: grid;
   grid-template-columns: repeat(2, minmax(160px, 1.5fr));
   gap: .005rem;
+  background-color: #705152;
+  border-radius: 22px;
 }
 
 .collection-gallery figure {
-  background: #836868; /* requested frame color */
+  background: #7d5b5d; /* requested frame color */
   border-radius: 23px;
-  border: 4px solid rgba(212, 193, 194, 1);
+  border: 4px solid rgba(151, 119, 119, 1);
   overflow: hidden;
   min-height: 180px;
   display: flex;
@@ -390,7 +423,28 @@ img {
 .collection-gallery img {
   width: 100%;
   height: 100%;
+  aspect-ratio: calc(16/9);
   object-fit: cover;
+}
+
+/* subtle hover lift + zoom for clickable collection images */
+.collection-gallery .collection-photo {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+  cursor: pointer;
+  margin: 3px
+}
+.collection-gallery .collection-photo:hover,
+.collection-gallery .collection-photo:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
+}
+.collection-gallery .collection-photo:hover img,
+.collection-gallery .collection-photo:focus-within img {
+  transform: scale(1.04);
+}
+.collection-gallery .collection-photo img {
+  transition: transform 0.15s ease;
 }
 
 /* big full-width photo after collections */
@@ -401,8 +455,8 @@ img {
 /* large collection hero we added underneath */
 .collection-hero img {
   width: 100%;
-  border-radius: 26px;
-  border: 6px solid rgba(212, 193, 194, 0.95);
+  border-radius: 22px;
+  border: 6px solid rgba(131, 104, 104);
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.25);
   max-height: 520px;
   object-fit: cover;
@@ -458,7 +512,7 @@ img {
   #about {
     grid-template-columns: 1fr;
   }
-  .feature-photo::after { display: none; }
+  .feature-photo::before { display: none; }
   .collections-body {
     grid-template-columns: 1fr;
   }
@@ -489,3 +543,46 @@ img {
 }
 
 /* legacy rule removed; handled earlier */
+
+/* ========== ALBUM PAGES ========== */
+.album-hero { margin-top: 2.2rem; }
+
+.album-sections .section-header h2 { font-size: 2rem; }
+
+.album { margin-top: 1.6rem; }
+
+.album h3 {
+  margin: 0 0 0.8rem;
+  font-family: "Della Respira", "Times New Roman", serif;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.9rem;
+}
+
+.photo-slot {
+  aspect-ratio: 4/3;
+  background: #836868;
+  border-radius: 20px;
+  border: 4px solid rgba(212, 193, 194, 1);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-slot::after {
+  content: "+ add photo";
+  font-family: "DM Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Collections • Storm's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          <a href="sigma.html#top" class="logo">Storm’s Portfolio</a>
+        </div>
+        <nav class="main-nav" aria-label="Main">
+          <ul>
+            <li><a href="sigma.html#collections">Collections</a></li>
+            <li><a href="sigma.html#portraits">Portraits</a></li>
+            <li><a href="sigma.html#about">About me</a></li>
+            <li><a href="sigma.html#contact">Contact me</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="collections-title">
+          <div class="hero-content">
+            <h1 id="collections-title">Collections</h1>
+          </div>
+        </section>
+
+        <section class="section collections" aria-label="Collections list">
+          <header class="section-header">
+            <h2>Explore collections</h2>
+            <p>Select a collection to view its albums.</p>
+          </header>
+
+          <div class="collections-body">
+            <div class="collection-list">
+              <div class="collection-list-item">
+                <h3><a href="album.html?title=Urban%20Explorers">Urban explorers</a></h3>
+                <p>City scenes, streets, and hidden corners.</p>
+              </div>
+              <div class="collection-list-item">
+                <h3><a href="album.html?title=Strange%20World">Strange world</a></h3>
+                <p>Abstract moments and odd perspectives.</p>
+              </div>
+              <div class="collection-list-item">
+                <h3><a href="album.html?title=Nature">Nature</a></h3>
+                <p>Forests, mountains, and raw landscapes.</p>
+              </div>
+              <div class="collection-list-item">
+                <h3><a href="album.html?title=Beauty%20Sky">Beauty sky</a></h3>
+                <p>Skies, sunsets, and atmospheric light.</p>
+              </div>
+            </div>
+
+            <div class="collection-gallery">
+              <figure class="collection-photo">
+                <a href="album.html?title=Urban%20Explorers" aria-label="Open Urban explorers">
+                  <img src="./images/v5_119.png" alt="Urban explorers" />
+                </a>
+              </figure>
+              <figure class="collection-photo">
+                <a href="album.html?title=Strange%20World" aria-label="Open Strange world">
+                  <img src="./images/v5_118.png" alt="Strange world" />
+                </a>
+              </figure>
+              <figure class="collection-photo">
+                <a href="album.html?title=Nature" aria-label="Open Nature">
+                  <img src="./images/v5_117.png" alt="Nature" />
+                </a>
+              </figure>
+              <figure class="collection-photo">
+                <a href="album.html?title=Beauty%20Sky" aria-label="Open Beauty sky">
+                  <img src="./images/v5_116.png" alt="Beauty sky" />
+                </a>
+              </figure>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Storm Aleksander Rikardsen</p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Album • Storm's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="brand">
+          <a href="sigma.html#top" class="logo">Storm’s Portfolio</a>
+        </div>
+        <nav class="main-nav" aria-label="Main">
+          <ul>
+            <li><a href="hundred.html">Collections</a></li>
+            <li><a href="sigma.html#portraits">Portraits</a></li>
+            <li><a href="sigma.html#about">About me</a></li>
+            <li><a href="sigma.html#contact">Contact me</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero album-hero" aria-labelledby="album-title">
+          <div class="hero-content">
+            <h1 id="album-title">Collection</h1>
+          </div>
+        </section>
+
+        <section class="section album-sections" aria-label="Albums in this collection">
+          <header class="section-header">
+            <h2>Albums</h2>
+            <p>Drop your photos into the slots below.</p>
+          </header>
+
+          <!-- Example albums (you can duplicate/remove as needed) -->
+          <article class="album" aria-labelledby="a1-title">
+            <h3 id="a1-title">Album 1</h3>
+            <div class="album-grid">
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+            </div>
+          </article>
+
+          <article class="album" aria-labelledby="a2-title">
+            <h3 id="a2-title">Album 2</h3>
+            <div class="album-grid">
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+            </div>
+          </article>
+
+          <article class="album" aria-labelledby="a3-title">
+            <h3 id="a3-title">Album 3</h3>
+            <div class="album-grid">
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+              <div class="photo-slot" title="Add photo"></div>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; <span id="year"></span> Storm Aleksander Rikardsen</p>
+      </footer>
+    </div>
+
+    <script>
+      // Set dynamic year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // If a title is provided via query (?title=...), use it in the heading
+      const params = new URLSearchParams(window.location.search);
+      const title = params.get('title');
+      if (title) {
+        const el = document.getElementById('album-title');
+        if (el) el.textContent = title;
+      }
+    </script>
+  </body>
+</html>
